@@ -6,20 +6,20 @@
     <title>Redirecting...</title>
     <script>
         (function() {
-            // Vérifie si la page actuelle est déjà `index.html`
-            if (window.location.pathname === '/index.html') {
-                // Arrête la boucle
-                console.log("Already on index.html, stopping redirection.");
+            // Vérifie si la page actuelle est déjà sur index.html ou utilise un hash
+            if (window.location.pathname === '/index.html' || window.location.hash) {
+                console.log("Redirection unnecessary, stopping.");
                 return;
             }
 
-            // Reconstruit l'URL complète en incluant les paramètres et fragments
+            // Reconstruit l'URL avec hash pour Blazor
             const pathname = window.location.pathname;
             const search = window.location.search;
             const hash = window.location.hash;
 
-            // Redirige vers `index.html` tout en conservant la route
+            // Redirige vers index.html avec hash pour conserver la route
             const newUrl = `${window.location.origin}/index.html#${pathname}${search}${hash}`;
+            console.log(`Redirecting to: ${newUrl}`);
             window.location.replace(newUrl);
         })();
     </script>
