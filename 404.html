@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="0; URL='/'" />
+    <script>
+        // Permet de rediriger vers index.html tout en conservant la route demandée
+        const redirectToIndex = () => {
+            const pathname = window.location.pathname;
+            const origin = window.location.origin;
+            window.location.href = `${origin}/index.html#${pathname}`;
+        };
+        redirectToIndex();
+    </script>
+</head>
+<body>
+    <h1>404 - Redirecting...</h1>
+</body>
+</html>
