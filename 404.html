@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Redirige vers index.html en préservant la route originale
+        (function() {
+            const pathname = window.location.pathname; // Chemin de la route
+            const search = window.location.search;     // Paramètres éventuels
+            const hash = window.location.hash;         // Fragment éventuel
+
+            // Redirection vers index.html avec le chemin en hash
+            const redirectUrl = `${window.location.origin}/#${pathname}${search}${hash}`;
+            window.location.replace(redirectUrl);
+        })();
+    </script>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+</body>
+</html>
