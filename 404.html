@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script>
-        // Extrait l'URL actuelle
-        const redirectToIndex = () => {
-            const pathname = window.location.pathname; // Route actuelle (par exemple, /home)
-            const search = window.location.search;     // Paramètres d'URL (si présents)
-            const hash = window.location.hash;         // Fragment d'URL (si présent)
+        (function() {
+            // Vérifie si la page actuelle est déjà `index.html`
+            if (window.location.pathname === '/index.html') {
+                // Arrête la boucle
+                console.log("Already on index.html, stopping redirection.");
+                return;
+            }
 
-            // Construit la nouvelle URL
-            const redirectUrl = `${window.location.origin}/index.html${pathname}${search}${hash}`;
+            // Reconstruit l'URL complète en incluant les paramètres et fragments
+            const pathname = window.location.pathname;
+            const search = window.location.search;
+            const hash = window.location.hash;
 
-            // Redirige vers index.html tout en préservant la route
-            window.location.replace(redirectUrl);
-        };
-
-        redirectToIndex();
+            // Redirige vers `index.html` tout en conservant la route
+            const newUrl = `${window.location.origin}/index.html#${pathname}${search}${hash}`;
+            window.location.replace(newUrl);
+        })();
     </script>
 </head>
 <body>
