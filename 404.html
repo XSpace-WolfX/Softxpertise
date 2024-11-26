@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0; URL='/'" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Redirecting...</title>
     <script>
-        // Permet de rediriger vers index.html tout en conservant la route demandée
+        // Extrait l'URL actuelle
         const redirectToIndex = () => {
-            const pathname = "/home";
-            const origin = window.location.origin;
-            window.location.href = `${origin}/index.html#${pathname}`;
+            const pathname = window.location.pathname; // Route actuelle (par exemple, /home)
+            const search = window.location.search;     // Paramètres d'URL (si présents)
+            const hash = window.location.hash;         // Fragment d'URL (si présent)
+
+            // Construit la nouvelle URL
+            const redirectUrl = `${window.location.origin}/index.html${pathname}${search}${hash}`;
+
+            // Redirige vers index.html tout en préservant la route
+            window.location.replace(redirectUrl);
         };
+
         redirectToIndex();
     </script>
 </head>
 <body>
-    <h1>404 - Redirecting...</h1>
+    <h1>Redirecting...</h1>
 </body>
 </html>
