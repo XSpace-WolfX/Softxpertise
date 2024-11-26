@@ -5,7 +5,7 @@
     <script>
         // Permet de rediriger vers index.html tout en conservant la route demandée
         const redirectToIndex = () => {
-            const pathname = window.location.pathname;
+            const pathname = "/home";
             const origin = window.location.origin;
             window.location.href = `${origin}/index.html#${pathname}`;
         };
