@@ -17,7 +17,7 @@
             const hash = window.location.hash || `#${pathname}`;
 
             // Redirige vers l'origine sans `/index.html`
-            const redirectUrl = `${window.location.origin}${hash}${search}`;
+            const redirectUrl = `${window.location.origin}${search}`;
             console.log(`Redirecting to: ${redirectUrl}`);
             window.location.replace(redirectUrl);
         })();
