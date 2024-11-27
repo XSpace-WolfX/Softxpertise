@@ -6,17 +6,22 @@
     <title>Redirecting...</title>
     <script>
         (function() {
-            const pathname = window.location.pathname; // Route actuelle (ex: /services)
-            const search = window.location.search;     // Paramètres éventuels
-            const hash = window.location.hash;         // Fragment éventuel
+            // Récupère les parties de l'URL
+            const pathname = window.location.pathname; // Ex: /services
+            const search = window.location.search;     // Ex: ?id=123
+            const hash = window.location.hash;         // Ex: #/services
 
-            // Si déjà un hash valide (#/...), pas besoin de rediriger
+            // Si l'URL contient déjà un hash valide, ne rien faire
             if (hash.startsWith('#/')) {
+                console.log("Hash already correct, no redirection needed.");
                 return;
             }
 
-            // Redirige en préservant la route actuelle
-            const redirectUrl = `${window.location.origin}/Softxpertise/index.html#${pathname}${search}`;
+            // Reconstruit l’URL sans `index.html` et ajoute le hash
+            const newPath = pathname.replace('/index.html', ''); // Supprime index.html s’il existe
+            const redirectUrl = `${window.location.origin}/Softxpertise/#${newPath}${search}`;
+            
+            console.log(`Redirecting to: ${redirectUrl}`);
             window.location.replace(redirectUrl);
         })();
     </script>
