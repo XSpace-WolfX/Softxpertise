@@ -14,10 +14,10 @@
             // Reconstruit l'URL sans `index.html`
             const pathname = window.location.pathname.replace('/index.html', ''); // Supprime index.html
             const search = window.location.search || '';
-            const hash = window.location.hash || `#${pathname}`;
+            const hash = window.location.hash || `${pathname}`;
 
             // Redirige vers l'origine sans `/index.html`
-            const redirectUrl = `${window.location.origin}${search}`;
+            const redirectUrl = `${window.location.origin}${hash}${search}`;
             console.log(`Redirecting to: ${redirectUrl}`);
             window.location.replace(redirectUrl);
         })();
