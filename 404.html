@@ -6,23 +6,17 @@
     <title>Redirecting...</title>
     <script>
         (function() {
-            // Capture l'URL actuelle
-            const origin = window.location.origin; // https://xspace-wolfx.github.io
-            const pathname = window.location.pathname.replace('/index.html', ''); // Supprime index.html s'il existe
-            const search = window.location.search; // ?params
-            const hash = window.location.hash; // #/route
+            const pathname = window.location.pathname; // Route actuelle (ex: /services)
+            const search = window.location.search;     // Paramètres éventuels
+            const hash = window.location.hash;         // Fragment éventuel
 
-            // Vérifie si l'URL est déjà conforme (pas de sous-dossier répété)
-            if (hash.startsWith('#/') || pathname === '/') {
-                console.log("URL is already valid, stopping redirection.");
+            // Si déjà un hash valide (#/...), pas besoin de rediriger
+            if (hash.startsWith('#/')) {
                 return;
             }
 
-            // Reconstruit une URL propre (avec le sous-dossier GitHub Pages)
-            const newPath = pathname.replace('/Softxpertise', ''); // Supprime le sous-dossier
-            const redirectUrl = `${origin}/Softxpertise/#${newPath}${search}`;
-            
-            console.log(`Redirecting to: ${redirectUrl}`);
+            // Redirige en préservant la route actuelle
+            const redirectUrl = `${window.location.origin}/Softxpertise/index.html#${pathname}${search}`;
             window.location.replace(redirectUrl);
         })();
     </script>
