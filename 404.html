@@ -12,7 +12,7 @@
             const hash = window.location.hash;         // Fragment éventuel
 
             // Redirection vers index.html avec le chemin en hash
-            const redirectUrl = `${window.location.origin}/#${pathname}${search}${hash}`;
+            const redirectUrl = `${window.location.origin}/index.html#${pathname}${search}${hash}`;
             window.location.replace(redirectUrl);
         })();
     </script>
