@@ -6,20 +6,25 @@
     <title>Redirecting...</title>
     <script>
         (function() {
-            // Si on est déjà sur la bonne page, ne pas rediriger
-            if (window.location.pathname === '/' || window.location.hash) {
+            // Capture le chemin et les paramètres actuels
+            const pathname = window.location.pathname; // Exemple: /home
+            const search = window.location.search;     // Paramètres: ?id=123
+            const hash = window.location.hash;         // Fragment: #section
+
+            // Vérifie si l'URL est déjà conforme
+            if (pathname === '/' || hash.startsWith('#/')) {
+                console.log("URL is already correct, no redirection needed.");
                 return;
             }
 
-            // Reconstruit l'URL sans `index.html`
-            const pathname = window.location.pathname.replace('/index.html', ''); // Supprime index.html
-            const search = window.location.search || '';
-            const hash = window.location.hash || `${pathname}`;
+            // Reconstruit une URL propre sans /index.html
+            const newUrl = `${window.location.origin}${search}#${pathname}`;
+            console.log(`Redirecting to: ${newUrl}`);
 
-            // Redirige vers l'origine sans `/index.html`
-            const redirectUrl = `${window.location.origin}${hash}${search}`;
-            console.log(`Redirecting to: ${redirectUrl}`);
-            window.location.replace(redirectUrl);
+            // Redirige uniquement si nécessaire
+            if (newUrl !== window.location.href) {
+                window.location.replace(newUrl);
+            }
         })();
     </script>
 </head>
